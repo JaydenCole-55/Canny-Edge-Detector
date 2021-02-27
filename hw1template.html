@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<title>CMPT 361 HW1 - Jayden Cole</title>
+
+</head> <body>
+
+<h2>CMPT 361 - Homework 1</h2>
+
+<p>Name: <b>Jayden Cole</b></p>
+<p>Student No: <b>301 345 850</b></p>
+<p>Date: 2020-10-04</p>
+
+<h4>Honor statement:</h4>
+<p>I have not cheated in any way when doing this assignment, I did it on my own. I may have asked questions about the assignment on Piazza, I know that’s totally fine and even encouraged. I also already know that this class is graded on a curve. I realize that if I cheat and by some miracle not get caught, any increase in my grade will in turn shift the curve and result in lower grades for my classmates. Any undeserved extra grade would come at the cost of all others. That’s horrible! I would never do it.</p>
+
+<h4>1: Take two photographs</h4>
+<img src="HP.png" alt="HP" width="300" height="300">
+<img src="LP.png" alt="LP" width="300" height="300">
+
+
+<h4>2: Compute frequency representations</h4>
+<img src="HP-freq.png" alt="HP-freq" width="300" height="300">
+<img src="LP-freq.png" alt="LP-freq" width="300" height="300">
+
+<h4>3: Visualize kernels</h4>
+<img src="gaus-surf.png" alt="gaus-surf" width="300" height="300">
+<img src="dog-surf.png" alt="dog-surf" width="300" height="300">
+<br><br>
+<img src="HP-filt.png" alt="HP-filt" width="300" height="300">
+<img src="HP-filt-freq.png" alt="HP-filt-freq" width="300" height="300">
+<br><br>
+<img src="LP-filt.png" alt="LP-filt" width="300" height="300">
+<img src="LP-filt-freq.png" alt="LP-filt-freq" width="300" height="300">
+<br><br>
+<img src="HP-dogfilt.png" alt="HP-dogfilt" width="300" height="300">
+<img src="HP-dogfilt-freq.png" alt="HP-dogfilt-freq" width="300" height="300">
+<br><br>
+<img src="LP-dogfilt.png" alt="LP-dogfilt" width="300" height="300">
+<img src="LP-dogfilt-freq.png" alt="LP-dogfilt-freq" width="300" height="300">
+
+<h4>4: Anti-aliasing</h4>
+<img src="HP-sub2.png" alt="HP-sub2" width="300" height="300">
+<img src="HP-sub2-freq.png" alt="HP-sub2-freq" width="300" height="300">
+<br><br>
+<img src="LP-sub2.png" alt="LP-sub2" width="300" height="300">
+<img src="LP-sub2-freq.png" alt="LP-sub2-freq" width="300" height="300">
+<p>In the HP example, aliasing can be seen in the clumps of white in the top right and bottom right
+    of the frequency response. What once were distinguishable patterns within the frequency
+    response are clumps of corrupted frequencies. In the LP example, this happens on a much smaller
+    degree. There are some high frequencies from the original image that have alised in particular
+    areas, (see the little grey clumps forming the outer diamond shape) but the overall frequency
+    response is less corrupted by the interfering higher frequencies.
+</p>
+
+<img src="HP-sub4.png" alt="HP-sub4" width="300" height="300">
+<img src="HP-sub4-freq.png" alt="HP-sub4-freq" width="300" height="300">
+<br><br>
+<img src="LP-sub4.png" alt="LP-sub4" width="300" height="300">
+<img src="LP-sub4-freq.png" alt="LP-sub4-freq" width="300" height="300">
+<p>Again the HP example shows large amounts of distortion in both the spacial and frequency 
+    domain. The pattern from the frequency response of the original image is now almost fully complete
+    with noise. The centre frequncies are still similar to before but the larger frequencies have
+    been corrupted. This shows in the spactial photo as the mesh of the pen holder is
+    heavily distorted. In the LP example, there is some small amount of noise around the centre frequencies
+    but as expected, the lower frequency photo is less distorted by subsampling, only a few pixels
+    can be noticable out of place. 
+</p>
+
+<img src="HP-sub2-aa.png" alt="HP-sub2-aa" width="300" height="300">
+<img src="HP-sub2-aa-freq.png" alt="HP-sub2-aa-freq" width="300" height="300">
+<br><br>
+<img src="HP-sub4-aa.png" alt="HP-sub4-aa" width="300" height="300">
+<img src="HP-sub4-aa-freq.png" alt="HP-sub4-aa-freq" width="300" height="300">
+<p>The gaussian filter applied to the first subsampled image (HP2) was of size 7
+    and std 1.5. HP4 was filtered with a gaussian of size 5 and std of 2. Both filters cut out
+    the noise generated from higher frequencies in the image overlapping with their harmonics
+    in the f-domain. Gaussian filters eliminate high frequencies as the gaussian is a low pass
+    filter. The images are blurred rather than static-y when using a LP-filter on them.
+</p>
+
+<h4>5: Canny edge detection thresholding</h4>
+
+<img src="HP-canny-optimal.png" alt="HP-canny-optimal" width="500" height="500">
+<br><br>
+<img src=" HP-canny-lowlow.png" alt=" HP-canny-lowlow" width="300" height="300">
+<img src=" HP-canny-highlow.png" alt=" HP-canny-highlow" width="300" height="300">
+<br><br>
+<img src=" HP-canny-lowhigh.png" alt=" HP-canny-lowhigh" width="300" height="300">
+<img src=" HP-canny-highhigh.png" alt=" HP-canny-highhigh" width="300" height="300">
+<p>I choose thresholds [0.07 0.04] as the optimal canny edge detection balance between weak and 
+    strong edges. In lowlow, distracting weak edges are added to the rim of the penholder and to
+    to some of the pens contained. Increasing the low threshold past its optimal value to 0.06
+    removes some of the crucial weak edges on the sides of the container, particularly an edge
+    about 2/3rds the way up the container on the right side. Decreasing the value of the strong edge
+    threshold to 0.05 greatly adds unnecessary edges to the rim of the pen holder, the wall, and the 
+    table. Increasing the strong edge threshold to 0.09 removes most of the distinct shadow edge 
+    found on the left hand side of the image as well as details of the pens and the mesh of the 
+    container. An optimal edge detection system would display the mesh a little clearer and be
+    able to avoid giving such strong edges to the dirt on the table. It could be able to do this 
+    by having different thresholds on different parts of the image.
+</p>
+
+<img src="LP-canny-optimal.png" alt="LP-canny-optimal" width="500" height="500">
+<br><br>
+<img src=" LP-canny-lowlow.png" alt=" LP-canny-lowlow" width="300" height="300">
+<img src=" LP-canny-highlow.png" alt=" LP-canny-highlow" width="300" height="300">
+<br><br>
+<img src=" LP-canny-lowhigh.png" alt=" LP-canny-lowhigh" width="300" height="300">
+<img src=" LP-canny-highhigh.png" alt=" LP-canny-highhigh" width="300" height="300">
+<p>An optimal pair of thresholds was determined to be [0.03 0.07] for the LP image. Lowering the low 
+    edge threshold to 0.01 increased length of the edge casted by the light towards the SFU logo. In 
+    the original image the light does not really go as far as this egse extends with the lower low threshold. 
+    However, increasing the threshold to 0.06 removes the right side of the bottle's edge which 
+    makes it look less rounded. Also, an edge from the bottom of the bottle is removed. Changing 
+    the strong edge threshold to 0.05 increases the number of noisy edges on the wall and on the right
+    hand side of the bottle. Increasing the strong edge threshold to 0.09 removes the rounding bottom
+    edge and an important edge down the middle up top on the bottle where the two molds of plastic meet.
+    However, it also removes much of the fragmented shadow edge found along the wall next to the bottle.
+    Again, a better edge detection system would use different parameters on different parts of the image
+    to correctly collect the important edges of the image. This would improve the shadow edge along the 
+    wall behind the bottle and not affect the edges on the bottle itself.
+</p>
+
+
+</body> </html>
